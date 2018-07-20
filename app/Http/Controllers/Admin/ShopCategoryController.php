@@ -73,11 +73,13 @@ class ShopCategoryController extends Controller
             $data = $request->all();
 //             dd($data);
             //判断图片是否上传
-            $fileName = $request->file('img')->store("shop", "public_images");
-            $data['img'] = $fileName;
-            $data['img'] = $fileName ?? '';
+            $data['img'] = '';
+            if ($request->file('img')) {
+                $fileName = $request->file('img')->store("shop", "public_images");
+                $data['img'] = $fileName;
+            }
             //添加数据
-            $shop::update($data);
+          $shop->update($data);
             //提示
             $request->session()->flash('success', '修改成功');
             //跳转
@@ -89,6 +91,12 @@ class ShopCategoryController extends Controller
 
     }
 
+    /**
+     * 商家分类删除
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function del(Request $request,$id){
          $shop=ShopCategory::find($id);
          $shop->delete();

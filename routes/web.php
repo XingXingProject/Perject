@@ -23,16 +23,19 @@ Route::domain('admin.ele.com')->namespace('Admin')->group(function () {
     Route::any('shop_category/edit/{id}',"ShopCategoryController@edit")->name('shop_category.edit');
     Route::get('shop_category/del/{id}',"ShopCategoryController@del")->name('shop_category.del');
 
+    //商家管理
+    Route::get('shop_user/index/',"ShopUserController@del")->name('shop_user.index');
+
 });
 
 
 
 
-//商户shop.ele.com
+//商家shop.ele.com
 Route::domain('shop.ele.com')->namespace('Shop')->group(function () {
 
-    Route::get('user/reg',"UserController@reg");
-    Route::get('user/index',"UserController@index");
+    Route::get('shop/reg',"ShopController@reg");
+    Route::get('shop/index',"ShopController@index");
 
 });
 

@@ -2,7 +2,7 @@
 @section('title','商家分类编辑页面')
 @section('content')
     <form class="form-horizontal" method="post" enctype="multipart/form-data">
-        {{ csrf_field() }}
+        {{ csrf_field()}}
         <div class="form-group">
             <label for="inputEmail3" class="col-sm-2 control-label">分类名称</label>
             <div class="col-sm-6">
@@ -34,7 +34,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-info">添加</button>
+                <button type="submit" class="btn btn-info">修改</button>
             </div>
         </div>
     </form>
