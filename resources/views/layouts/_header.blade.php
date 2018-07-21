@@ -21,7 +21,7 @@
                        aria-expanded="false">商家后台管理<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{route('shop_category.index')}}">商家分类管理</a></li>
-                        <li><a href="#">商家管理</a></li>
+                        <li><a href="{{route('shop_user.index')}}">商家管理</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#">退出</a></li>
                     </ul>

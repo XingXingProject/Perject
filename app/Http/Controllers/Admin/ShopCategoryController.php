@@ -53,7 +53,7 @@ class ShopCategoryController extends Controller
         }
 
         //显示视图
-        return view('admin.add');
+        return view('add');
 
     }
 

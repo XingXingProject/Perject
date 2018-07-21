@@ -15,6 +15,11 @@ class CreateShopUsersTable extends Migration
     {
         Schema::create('shop_users', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name')->comment('商家姓名');
+            $table->string('password')->comment('商家密码');
+            $table->string('email')->comment('商家邮箱');
+            $table->integer('status')->comment('商家状态 1==启用 0==禁用');
+            $table->integer('shop_id')->comment('所属商家信息id');
             $table->timestamps();
         });
     }
