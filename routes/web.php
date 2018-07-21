@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 //平台路由admin.ele.com
 Route::domain('admin.ele.com')->namespace('Admin')->group(function () {
     //店铺分类 route('路径'，‘控制器/方法’)
@@ -28,17 +29,21 @@ Route::domain('admin.ele.com')->namespace('Admin')->group(function () {
     Route::any('shop_user/add',"ShopUserController@add")->name('shop_user.add');
     Route::any('shop_user/edit/{id}',"ShopUserController@edit")->name('shop_user.edit');
     Route::get('shop_user/del/{id}',"ShopUserController@del")->name('shop_user.del');
+    //商家信息管理
+    Route::get('shop_info/index',"ShopInfoController@index")->name('shop_info.index');
+    Route::any('shop_info/reg',"ShopInfoController@reg")->name('shop_info.reg');
+    Route::any('shop_info/edit/{id}',"ShopInfoController@edit")->name('shop_info.edit');
+    Route::get('shop_info/del/{id}',"ShopInfoController@del")->name('shop_info.del');
+    Route::get('shop_info/see/{id}',"ShopInfoController@see")->name('shop_info.see');
+    Route::get('shop_info/pp',"ShopInfoController@pp")->name('shop_info.pp');
 
 });
-
-
-
 
 //商家shop.ele.com
 Route::domain('shop.ele.com')->namespace('Shop')->group(function () {
 
-    Route::get('shop/reg',"ShopController@reg");
-    Route::get('shop/index',"ShopController@index");
+    Route::any('user/reg',"UserController@reg")->name('user.reg');
+
 
 });
 

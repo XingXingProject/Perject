@@ -23,7 +23,7 @@ class ShopCategoryController extends Controller
         $shops = ShopCategory::where('name', 'like', "%$search%")
             ->paginate(2);
         //显示视图
-        return view('admin.index', compact('shops', 'query'));
+        return view('admin.category.index', compact('shops', 'query'));
     }
 
 
@@ -53,7 +53,7 @@ class ShopCategoryController extends Controller
         }
 
         //显示视图
-        return view('add');
+        return view('admin.category.add');
 
     }
 
@@ -87,7 +87,7 @@ class ShopCategoryController extends Controller
         }
 
         //显示视图
-        return view('admin.edit',compact('shop'));
+        return view('admin.category.edit',compact('shop'));
 
     }
 
