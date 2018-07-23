@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\ShopCategory;
 use App\Models\ShopInfo;
 use App\Models\ShopUser;
 use Illuminate\Http\Request;
@@ -9,11 +10,11 @@ use App\Http\Controllers\Controller;
 
 class ShopUserController extends Controller
 {
-    //
+
     public function index(Request $request)
     {
         //连表shop_info
-        $info=ShopInfo::all();
+        $info = ShopInfo::all();
 //        dd($info);
         //取到所有的值
         $query = $request->query();
@@ -24,7 +25,7 @@ class ShopUserController extends Controller
         $shops = ShopUser::where('name', 'like', "%$search%")
             ->paginate(2);
         //显示视图
-        return view('admin.shop.index', compact('shops', 'query','info'));
+        return view('admin.shop.index', compact('shops', 'query', 'info'));
     }
 
 
@@ -33,22 +34,23 @@ class ShopUserController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function add(Request $request)
-    {
-        //判断是否是post上传
-        if ($request->isMethod('post')) {
-            //添加数据
-            ShopUser::create($request->post());
-            //提示
-            $request->session()->flash('success', '添加成功');
-            //跳转
-            return redirect()->route('shop_user.index');
-        }
-
-        //显示视图
-        return view('admin.shop.add');
-
-    }
+//    public function add(Request $request)
+//    {
+//        ShopCategory::all();
+//        //判断是否是post上传
+//        if ($request->isMethod('post')) {
+//            //添加数据
+//            ShopUser::create($request->post());
+//            //提示
+//            $request->session()->flash('success', '添加成功');
+//            //跳转
+//            return redirect()->route('shop_user.index');
+//        }
+//
+//        //显示视图
+//        return view('admin.shop.add');
+//
+//    }
 
 
     /**
@@ -60,13 +62,11 @@ class ShopUserController extends Controller
     public function edit(Request $request, $id)
     {
         //通过id找到数据库具体的数据
-        //连表shop_info
-        ShopInfo::all();
         $shop = ShopUser::find($id);
         //判断是否是post上传
         if ($request->isMethod('post')) {
-
             //添加数据
+
             $shop->update($request->all());
             //提示
             $request->session()->flash('success', '修改成功');
@@ -75,7 +75,7 @@ class ShopUserController extends Controller
         }
 
         //显示视图
-        return view('admin.shop.edit',compact('shop'));
+        return view('admin.shop.edit', compact('shop'));
 
     }
 
@@ -85,14 +85,33 @@ class ShopUserController extends Controller
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function del(Request $request,$id){
-        $shop=ShopUser::find($id);
+    public function del(Request $request, $id)
+    {
+        $shop = ShopUser::find($id);
+        $info = ShopInfo::find($id);
         $shop->delete();
+        $info->delete();
         //提示语句
-        $request->session()->flash('success','删除成功');
+        $request->session()->flash('success', '删除成功');
         //显示视图
         return redirect()->route('shop_user.index');
 
+
+    }
+    //重置密码
+    public function clear(Request $request,$id){
+        //得到数据库的密码
+                $user= ShopUser::findOrFail($id);
+                $user['password']='123456';
+                $user['password']=bcrypt($user['passord']);
+                $user->update([
+                    'id'=>$user['id'],
+                    'password'=>$user['password']
+                ]);
+        //提示语句
+        $request->session()->flash('success', '重置成功');
+        //显示视图
+        return redirect()->route('shop_user.index');
 
 
     }

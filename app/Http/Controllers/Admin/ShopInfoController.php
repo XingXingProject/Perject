@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\ShopCategory;
 use App\Models\ShopInfo;
+use App\Models\ShopUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -60,9 +61,12 @@ class ShopInfoController extends Controller
                 $fileName = $request->file('shop_img')->store("shopInfo", "public_images");
                 $data['shop_img'] = $fileName;
             }
-
-            //添加数据
-            ShopInfo::create($data);
+//  dd($data);
+            //插入数据到表shopInfo
+            $info=ShopInfo::create($data);
+            $data['id']=$info->id;
+            //插入数据到表shopUser
+            ShopUser::create($data);
             //提示
             $request->session()->flash('success', '添加成功');
             //跳转
@@ -120,6 +124,8 @@ class ShopInfoController extends Controller
     public function del(Request $request,$id){
         $shop=ShopInfo::find($id);
         $shop->delete();
+        $user=ShopUser::find($id);
+        $user->delete();
         //提示语句
         $request->session()->flash('success','删除成功');
         //显示视图

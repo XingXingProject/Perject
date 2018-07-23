@@ -3,6 +3,9 @@
 @section('content')
     <form class="form-horizontal" method="post" enctype="multipart/form-data">
         {{ csrf_field()}}
+
+
+
         <div class="form-group">
             <label for="inputEmail3" class="col-sm-2 control-label">商家名称</label>
             <div class="col-sm-6">
@@ -27,7 +30,7 @@
         <div class="form-group">
             <label for="inputEmail3" class="col-sm-2 control-label">图片上传</label>
             <div class="col-sm-6">
-                <input type="file" class="form-control" id="inputEmail3" placeholder="" name="img"
+                <input type="file" class="form-control" id="inputEmail3" placeholder="" name="shop_img"
                        value="{{old("shop_img")}}">
                 @if($shop->shop_img)
                     <img src="/uploads/{{$shop->shop_img}}" width="50">
@@ -140,17 +143,17 @@
         <div class="form-group">
             <label for="inputEmail3" class="col-sm-2 control-label">店公告</label>
             <div class="col-sm-6">
-                <textera name="notice" >
+                <textarea name="notice" >
                     {{old('notice',$shop->notice)}}
-                </textera>
+                </textarea>
             </div>
         </div>
         <div class="form-group">
             <label for="inputEmail3" class="col-sm-2 control-label">优惠信息</label>
             <div class="col-sm-6">
-                <textera name="discount" >
+                <textarea name="discount" >
                     {{old('discount',$shop->discount)}}
-                </textera>
+                </textarea>
             </div>
         </div>
 

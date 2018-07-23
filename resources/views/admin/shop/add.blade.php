@@ -1,5 +1,5 @@
 @extends('admin.layouts.default')
-@section('title','商家分类编辑页面')
+@section('title','商家页面')
 @section('content')
     <form class="form-horizontal" method="post" enctype="multipart/form-data">
         {{ csrf_field()}}
@@ -14,6 +14,12 @@
             <label for="inputEmail3" class="col-sm-2 control-label">商家email</label>
             <div class="col-sm-6">
                 <input type="email" class="form-control" id="inputEmail3" placeholder="商家email" name="email" value="{{old('email')}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">商家email</label>
+            <div class="col-sm-6">
+                <input type="password" class="form-control" id="inputEmail3" placeholder="商家密码" name="password" value="{{old('password')}}">
             </div>
         </div>
 

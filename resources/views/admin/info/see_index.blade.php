@@ -12,46 +12,45 @@
    </a>
     <table class="table table-bordered table-hover">
         <tr class="warning">
-            <th>bao</th>
-            <th>shop_rating</th>
-            <th>brand</th>
-            <th>piao</th>
-            <th>zhun</th>
-            <th>start_send</th>
-            <th>start_cost</th>
-            <th>notice</th>
-            <th>discount</th>
-            <th>status</th>
+            <th>店铺评分</th>
+            <th>是否保标记</th>
+            <th>是否品牌</th>
+            <th>piao是否票标记</th>
+            <th>是否准时送达</th>
+            <th>起送费</th>
+            <th>配送费</th>
+            <th>店铺公告</th>
+            <th>店铺优惠活动</th>
+            <th>是否启用</th>
             <th>操作</th>
         </tr>
             <tr class="info">
                 <td>
-                    @if($shop->bao===1)
-                        <span class="glyphicon glyphicon-ok"></span>
-                    @else
-                        <span class="glyphicon glyphicon-remove"></span>
-                    @endif</td></td>
-
-                <td>
                     {{$shop->shop_rating}}
                 </td>
                 <td>
+                    @if($shop->bao===1)
+                        <span class="glyphicon glyphicon-ok" style="color: green"></span>
+                    @else
+                        <span class="glyphicon glyphicon-remove" style="color: red"></span>
+                    @endif</td></td>
+                <td>
                     @if($shop->brand===1)
-                        <span class="glyphicon glyphicon-ok"></span>
+                        <span class="glyphicon glyphicon-ok" style="color: green"></span>
                     @endif
                 </td>
 
                 <td>
                     @if($shop->piao===1)
-                        <span class="glyphicon glyphicon-ok"></span>
+                        <span class="glyphicon glyphicon-ok" style="color: green"></span>
                     @else
-                        <span class="glyphicon glyphicon-remove"></span>
+                        <span class="glyphicon glyphicon-remove" style="color: red"></span>
                     @endif</td>
                 <td>
                     @if($shop->zhun===1)
-                        <span class="glyphicon glyphicon-ok"></span>
+                        <span class="glyphicon glyphicon-ok" style="color: green"></span>
                     @else
-                        <span class="glyphicon glyphicon-remove"></span>
+                        <span class="glyphicon glyphicon-remove" style="color:red"></span>
                     @endif</td></td>
                 <td>{{$shop->start_send}}</td>
                 <td>{{$shop->start_cost}}</td>
@@ -59,7 +58,9 @@
                 <td>{{$shop->discount}}</td>
                 <td>
                     @if($shop->status===1)
-                    <span class="glyphicon glyphicon-ok"></span>
+                    <span class="glyphicon glyphicon-ok" style="color: green"></span>
+                    @else
+                        <span class="glyphicon glyphicon-remove" style="color: red "></span>
                     @endif
 
                 </td>

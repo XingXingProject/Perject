@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ShopUser extends Model
 {
     //
-    public $fillable=['name','password','email','shop_id','status'];
+    public $fillable=['id','name','password','email','status'];
 
 
     //连表shop_info
@@ -16,12 +16,12 @@ class ShopUser extends Model
         return $this->hasOne(ShopInfo::class,"id");
     }
 
-//    //连表shopCate
-//    public function shopCategory(){
-//        return $this->belongsTo(ShopCategory::class,"shop_category_id");
-//
-//
-//    }
+    //连表shopCate
+    public function shopCategory(){
+        return $this->belongsTo(ShopCategory::class,"shop_category_id");
+
+
+    }
 
 
 }

@@ -13,17 +13,19 @@
     <table class="table table-bordered table-hover">
         <tr class="warning">
             <th>id</th>
-            <th>shop_category_id</th>
-            <th>shop_name</th>
-            <th>shop_img</th>
-            <th>on_time</th>
-            <th>fengniao</th>
+            <th>商家老板</th>
+            <th>店铺分类</th>
+            <th>店铺名称</th>
+            <th>商家图片</th>
+            <th>是否准时</th>
+            <th>是否蜂鸟配送</th>
 
             <th>操作</th>
         </tr>
         @foreach($shops as $shop)
             <tr class="info">
                 <td>{{$shop->id}}</td>
+                <td>{{$shop->shop_user->name}}</td>
                 <td>{{$shop->shopCategory->name}}</td>
                 <td>{{$shop->shop_name}}</td>
                 <td>
@@ -33,13 +35,13 @@
                 </td>
                 <td>
                     @if($shop->on_time===1)
-                        <span class="glyphicon glyphicon-ok"></span>
+                        <span class="glyphicon glyphicon-ok" style="color: green"></span>
                     @else
-                        <span class="glyphicon glyphicon-remove"></span>
+                        <span class="glyphicon glyphicon-remove" style="color: red"></span>
                     @endif</td></td></td>
                 <td>
                     @if($shop->fengniao===1)
-                        <span class="glyphicon glyphicon-ok"></span>
+                        <span class="glyphicon glyphicon-ok" style="color: green"></span>
                     @else
                         <span class="glyphicon glyphicon-remove"></span>
                     @endif</td></td></td></td>
