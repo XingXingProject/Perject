@@ -40,7 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
 
         'api' => [
             'driver' => 'token',
@@ -66,15 +69,22 @@ return [
     */
 
     'providers' => [
+        //默认商户登录
         'users' => [
             'driver' => 'eloquent',
-            'model' => \App\Models\User::class,
+            'model' =>\App\Models\User::class,
+        ],
+        //提供平台登录
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' =>\App\Models\Admin::class
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+
+//         'users' => [
+//             'driver' => 'database',
+//             'table' => 'peoples',
+//         ],
     ],
 
     /*

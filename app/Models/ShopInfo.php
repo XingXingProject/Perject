@@ -20,7 +20,7 @@ class ShopInfo extends Model
     }
     ////通过商家人找商家 -对-
     public function shop_user(){
-        return $this->hasOne(ShopUser::class,"id");
+        return $this->hasOne(User::class,"id");
     }
 
 

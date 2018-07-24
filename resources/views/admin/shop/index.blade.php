@@ -14,7 +14,7 @@
         <tr class="warning">
             <th>id</th>
             <th>商家老板</th>
-            <th>商家密码</th>
+            {{--<th>商家密码</th>--}}
             <th>商家email</th>
             <th>是否启用</th>
             <th>所属店铺</th>
@@ -24,9 +24,9 @@
             <tr class="info">
                 <td>{{$shop->id}}</td>
                 <td>{{$shop->name}}</td>
-                <td>
-                    {{$shop->password}}
-                </td>
+                {{--<td>--}}
+                    {{--{{$shop->password}}--}}
+                {{--</td>--}}
                 <td>{{$shop->email}}</td>
                 <td>
                     @if($shop->status===1)

@@ -25,26 +25,25 @@ Route::domain('admin.ele.com')->namespace('Admin')->group(function () {
     Route::get('shop_category/del/{id}',"ShopCategoryController@del")->name('shop_category.del');
 
     //商家人管理
-    Route::get('shop_user/index',"ShopUserController@index")->name('shop_user.index');
-    Route::any('shop_user/add',"ShopUserController@add")->name('shop_user.add');
-    Route::any('shop_user/edit/{id}',"ShopUserController@edit")->name('shop_user.edit');
-    Route::get('shop_user/del/{id}',"ShopUserController@del")->name('shop_user.del');
-    Route::any('shop_user/clear/{id}',"ShopUserController@clear")->name('shop_user.clear');
+    Route::get('shop_user/index',"UserController@index")->name('shop_user.index');
+    Route::any('shop_user/add',"UserController@add")->name('shop_user.add');
+    Route::any('shop_user/edit/{id}',"UserController@edit")->name('shop_user.edit');
+    Route::get('shop_user/del/{id}',"UserController@del")->name('shop_user.del');
+    Route::any('shop_user/clear/{id}',"UserController@clear")->name('shop_user.clear');
     //商家信息管理
     Route::get('shop_info/index',"ShopInfoController@index")->name('shop_info.index');
-    Route::any('shop_info/reg',"ShopInfoController@reg")->name('shop_info.reg');
+    Route::any('shop_info/add',"ShopInfoController@add")->name('shop_info.add');
     Route::any('shop_info/edit/{id}',"ShopInfoController@edit")->name('shop_info.edit');
     Route::get('shop_info/del/{id}',"ShopInfoController@del")->name('shop_info.del');
     Route::get('shop_info/see/{id}',"ShopInfoController@see")->name('shop_info.see');
-    Route::get('shop_info/pp',"ShopInfoController@pp")->name('shop_info.pp');
     //平台管理员
-    Route::get('user/index',"UserController@index")->name('user.index');
-    Route::any('user/add',"UserController@add")->name('user.add');
-    Route::any('user/edit/{id}',"UserController@edit")->name('user.edit');
-    Route::get('user/del/{id}',"UserController@del")->name('user.del');
-    Route::any('user/check/{id}',"UserController@check")->name('user.check');
-    Route::any('user/login',"UserController@login")->name('user.login');
-    Route::any('user/logout',"UserController@logout")->name('user.logout');
+    Route::get('admin/index',"AdminController@index")->name('admin.index');
+    Route::any('admin/add',"AdminController@add")->name('admin.add');
+    Route::any('admin/edit/{id}',"AdminController@edit")->name('admin.edit');
+    Route::get('admin/del/{id}',"AdminController@del")->name('admin.del');
+    Route::any('admin/check/{id}',"AdminController@check")->name('admin.check');
+    Route::any('admin/login',"AdminController@login")->name('admin.login');
+    Route::any('admin/logout',"AdminController@logout")->name('admin.logout');
 
 
 
@@ -52,10 +51,20 @@ Route::domain('admin.ele.com')->namespace('Admin')->group(function () {
 
 //商家shop.ele.com
 Route::domain('shop.ele.com')->namespace('Shop')->group(function () {
-//商家注册
-    Route::any('user/reg',"UserController@reg")->name('user.reg');
+//商家注册 登录
+    Route::get('user/reg',"UserController@reg")->name('user.reg');
     Route::any('user/joins',"UserController@joins")->name('user.joins');
-
+    Route::any('user/logout',"UserController@logout")->name('user.logout');
+//商家菜品分类
+    Route::any('menuCategory/index',"MenuCategoryController@index")->name('menuCategory.index');
+    Route::any('menuCategory/add',"MenuCategoryController@add")->name('menuCategory.add');
+    Route::any('menuCategory/edit/{id}',"MenuCategoryController@edit")->name('menuCategory.edit');
+    Route::any('menuCategory/del/{id}',"MenuCategoryController@del")->name('menuCategory.del');
+//菜品表
+    Route::any('menu/index',"MenuController@index")->name('menu.index');
+    Route::any('menu/add',"MenuController@add")->name('menu.add');
+    Route::any('menu/edit/{id}',"MenuController@edit")->name('menu.edit');
+    Route::any('menu/del/{id}',"MenuController@del")->name('menu.del');
 
 
 });

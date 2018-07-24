@@ -36,7 +36,7 @@
                     <li class="active"><a href="{{route('shop_category.index')}}"><i class="fa fa-circle-o"></i> 商家分类管理</a></li>
                     <li><a href="{{route('shop_info.index')}}"><i class="fa fa-circle-o"></i> 商家店铺信息管理</a></li>
                     <li><a href="{{route('shop_user.index')}}"><i class="fa fa-circle-o"></i> 商家信息管理</a></li>
-                    <li><a href="{{route('user.index')}}"><i class="fa fa-circle-o"></i> 平台管理员</a></li>
+                    <li><a href="{{route('admin.index')}}"><i class="fa fa-circle-o"></i> 平台管理员</a></li>
                 </ul>
             </li>
             <li class="treeview">

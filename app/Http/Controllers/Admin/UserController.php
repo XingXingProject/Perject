@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\ShopCategory;
 use App\Models\ShopInfo;
-use App\Models\ShopUser;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ShopUserController extends Controller
+class UserController extends BaseController
 {
 
     public function index(Request $request)
@@ -22,7 +22,7 @@ class ShopUserController extends Controller
         $search = $request->input('search');
 
         //显示
-        $shops = ShopUser::where('name', 'like', "%$search%")
+        $shops = User::where('name', 'like', "%$search%")
             ->paginate(2);
         //显示视图
         return view('admin.shop.index', compact('shops', 'query', 'info'));
@@ -40,7 +40,7 @@ class ShopUserController extends Controller
 //        //判断是否是post上传
 //        if ($request->isMethod('post')) {
 //            //添加数据
-//            ShopUser::create($request->post());
+//            User::create($request->post());
 //            //提示
 //            $request->session()->flash('success', '添加成功');
 //            //跳转
@@ -62,7 +62,7 @@ class ShopUserController extends Controller
     public function edit(Request $request, $id)
     {
         //通过id找到数据库具体的数据
-        $shop = ShopUser::find($id);
+        $shop = User::find($id);
         //判断是否是post上传
         if ($request->isMethod('post')) {
             //添加数据
@@ -87,7 +87,7 @@ class ShopUserController extends Controller
      */
     public function del(Request $request, $id)
     {
-        $shop = ShopUser::find($id);
+        $shop = User::find($id);
         $info = ShopInfo::find($id);
         $shop->delete();
         $info->delete();
@@ -101,13 +101,9 @@ class ShopUserController extends Controller
     //重置密码
     public function clear(Request $request,$id){
         //得到数据库的密码
-                $user= ShopUser::findOrFail($id);
-                $user['password']='123456';
-                $user['password']=bcrypt($user['passord']);
-                $user->update([
-                    'id'=>$user['id'],
-                    'password'=>$user['password']
-                ]);
+                $user= User::findOrFail($id);
+                $user->password=bcrypt('123456');
+                $user->save();
         //提示语句
         $request->session()->flash('success', '重置成功');
         //显示视图

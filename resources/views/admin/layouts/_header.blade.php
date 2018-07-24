@@ -29,7 +29,7 @@
                                 {{--<li><!-- start message -->--}}
                                     {{--<a href="#">--}}
                                         {{--<div class="pull-left">--}}
-                                            {{--<img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">--}}
+                                            {{--<img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="Admin Image">--}}
                                         {{--</div>--}}
                                         {{--<h4>--}}
                                             {{--Support Team--}}
@@ -42,7 +42,7 @@
                                 {{--<li>--}}
                                     {{--<a href="#">--}}
                                         {{--<div class="pull-left">--}}
-                                            {{--<img src="/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">--}}
+                                            {{--<img src="/dist/img/user3-128x128.jpg" class="img-circle" alt="Admin Image">--}}
                                         {{--</div>--}}
                                         {{--<h4>--}}
                                             {{--AdminLTE Design Team--}}
@@ -54,7 +54,7 @@
                                 {{--<li>--}}
                                     {{--<a href="#">--}}
                                         {{--<div class="pull-left">--}}
-                                            {{--<img src="/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">--}}
+                                            {{--<img src="/dist/img/user4-128x128.jpg" class="img-circle" alt="Admin Image">--}}
                                         {{--</div>--}}
                                         {{--<h4>--}}
                                             {{--Developers--}}
@@ -66,7 +66,7 @@
                                 {{--<li>--}}
                                     {{--<a href="#">--}}
                                         {{--<div class="pull-left">--}}
-                                            {{--<img src="/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">--}}
+                                            {{--<img src="/dist/img/user3-128x128.jpg" class="img-circle" alt="Admin Image">--}}
                                         {{--</div>--}}
                                         {{--<h4>--}}
                                             {{--Sales Department--}}
@@ -78,7 +78,7 @@
                                 {{--<li>--}}
                                     {{--<a href="#">--}}
                                         {{--<div class="pull-left">--}}
-                                            {{--<img src="/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">--}}
+                                            {{--<img src="/dist/img/user4-128x128.jpg" class="img-circle" alt="Admin Image">--}}
                                         {{--</div>--}}
                                         {{--<h4>--}}
                                             {{--Reviewers--}}
@@ -138,11 +138,11 @@
 
                 {{--<li class="dropdown user user-menu">--}}
                     {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown">--}}
-                        {{--<img src="/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">--}}
+                        {{--<img src="/dist/img/user2-160x160.jpg" class="user-image" alt="Admin Image">--}}
                         {{--<span class="hidden-xs">登录</span>--}}
                     {{--</a>--}}
                     {{--<ul class="dropdown-menu">--}}
-                        {{--<!-- User image -->--}}
+                        {{--<!-- Admin image -->--}}
 
                         {{--<!-- Menu Footer-->--}}
                         {{--<li class="user-footer">--}}
@@ -159,15 +159,21 @@
                         <span class="hidden-xs">入口</span>
                     </a>
                     <ul class="dropdown-menu">
-                        <!-- User image -->
+                        <!-- Admin image -->
 
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="{{route('user.login')}}" class="btn btn-default btn-flat">登录</a>
+                                @auth('admin')
+                                    <a href="#" class="btn btn-default btn-flat">管理员：{{\Illuminate\Support\Facades\Auth::user()->name}}  </a>
+
+                                @endauth
+                                @guest('admin')
+                                <a href="{{route('admin.login')}}" class="btn btn-default btn-flat">登录</a>
+                                @endguest
                             </div>
                             <div class="pull-right">
-                                <a href="{{route('user.logout')}}" class="btn btn-default btn-flat">退出</a>
+                                <a href="{{route('admin.logout')}}" class="btn btn-default btn-flat">退出</a>
                             </div>
                         </li>
 

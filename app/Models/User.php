@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 
-class ShopUser extends Model
+class User extends Authenticatable
 {
     //
     public $fillable=['id','name','password','email','status'];

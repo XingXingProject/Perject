@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\ShopCategory;
 use App\Models\ShopInfo;
-use App\Models\ShopUser;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ShopInfoController extends Controller
+class ShopInfoController extends BaseController
 {
     //商家信息显示功能
     public function index(Request $request)
@@ -46,7 +46,7 @@ class ShopInfoController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function reg(Request $request)
+    public function add(Request $request)
     {
         $category=ShopCategory::all();
         //判断是否是post上传
@@ -54,19 +54,20 @@ class ShopInfoController extends Controller
 
 
             $data = $request->all();
-//             dd($data);
+//            dd($data);
             //判断图片是否上传
             $data['shop_img'] = '';
             if ($request->file('shop_img')) {
                 $fileName = $request->file('shop_img')->store("shopInfo", "public_images");
                 $data['shop_img'] = $fileName;
             }
-//  dd($data);
+
             //插入数据到表shopInfo
             $info=ShopInfo::create($data);
             $data['id']=$info->id;
+
             //插入数据到表shopUser
-            ShopUser::create($data);
+            User::create($data);
             //提示
             $request->session()->flash('success', '添加成功');
             //跳转
@@ -124,7 +125,7 @@ class ShopInfoController extends Controller
     public function del(Request $request,$id){
         $shop=ShopInfo::find($id);
         $shop->delete();
-        $user=ShopUser::find($id);
+        $user=User::find($id);
         $user->delete();
         //提示语句
         $request->session()->flash('success','删除成功');
@@ -135,11 +136,7 @@ class ShopInfoController extends Controller
 
     }
 
-    public function pp(){
-        return view('index');
 
-
-    }
 
 
 }

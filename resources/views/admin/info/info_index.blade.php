@@ -9,7 +9,7 @@
         <div class="form-group">
         </div>
     </form>
-    <a href="{{route('shop_info.reg')}}" class="btn btn-info">添加</a>
+    <a href="{{route('shop_info.add')}}" class="btn btn-info">添加</a>
     <table class="table table-bordered table-hover">
         <tr class="warning">
             <th>id</th>
