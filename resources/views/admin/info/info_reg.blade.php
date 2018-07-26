@@ -46,7 +46,7 @@
         <div class="form-group">
             <label for="inputEmail3" class="col-sm-2 control-label">图片上传</label>
             <div class="col-sm-6">
-                <input type="file" class="form-control" id="inputEmail3" placeholder="" name="img"
+                <input type="file" class="form-control" id="inputEmail3" placeholder="" name="shop_img"
                        value="{{old("shop_img")}}">
             </div>
         </div>

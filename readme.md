@@ -198,3 +198,21 @@ $cates=MenuCategory::all();
 
 老是遇到一些奇奇怪怪的错误！！！粗心（慢慢解决）
 
+
+
+## day4 重点要点
+
+内容编辑器使用步骤要记住
+
+{{request->input('name')}}--->下拉或者框搜索后回显的值
+$request->input('name');--->页面传过来的接收值可以改为get post
+$request->query()    ---all();--->页面全部的值
+
+### 遇到的问题
+
+图片上传  步骤太多在看
+
+带条件显示和带条件搜索时会懵逼（已解决）
+
+时间 date datetime  time()   区别是什么    date(now())    (自己百度去了)
+

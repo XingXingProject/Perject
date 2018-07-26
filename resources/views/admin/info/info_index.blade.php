@@ -30,7 +30,7 @@
                 <td>{{$shop->shop_name}}</td>
                 <td>
                     @if($shop->shop_img)
-                        <img src="/uploads/{{$shop->shop_img}}" width="50" >
+                        <img src="{{$shop->shop_img}}" width="50" >
                     @endif
                 </td>
                 <td>

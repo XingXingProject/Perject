@@ -57,11 +57,16 @@ class ShopInfoController extends BaseController
 //            dd($data);
             //判断图片是否上传
             $data['shop_img'] = '';
-            if ($request->file('shop_img')) {
-                $fileName = $request->file('shop_img')->store("shopInfo", "public_images");
-                $data['shop_img'] = $fileName;
-            }
 
+            if ($request->file('shop_img')!==null) {
+//                $fileName = $request->file('shop_img')->store("shopInfo", "public_images");
+                    //上传文件
+                    $fileName= $request->file('shop_img')->store("tp","oss");
+
+//                    dd(env("ALIYUN_OSS_URL").$fileName);//要保存到数据库
+                $data['shop_img'] =  env("ALIYUN_OSS_URL").$fileName;
+            }
+//            dd($data["shop_img"]);
             //插入数据到表shopInfo
             $info=ShopInfo::create($data);
             $data['id']=$info->id;
@@ -98,9 +103,17 @@ class ShopInfoController extends BaseController
 //             dd($data);
             //判断图片是否上传
             $data['shop_img'] = '';
-            if ($request->file('shop_img')) {
-                $fileName = $request->file('shop_img')->store("shopInfo", "public_images");
-                $data['shop_img'] = $fileName;
+//            if ($request->file('shop_img')) {
+//                $fileName = $request->file('shop_img')->store("shopInfo", "public_images");
+//                $data['shop_img'] = $fileName;
+//            }
+            if ($request->file('shop_img')!==null) {
+//                $fileName = $request->file('shop_img')->store("shopInfo", "public_images");
+                //上传文件
+                $fileName= $request->file('shop_img')->store("tp","oss");
+
+//                    dd(env("ALIYUN_OSS_URL").$fileName);//要保存到数据库
+                $data['shop_img'] =  env("ALIYUN_OSS_URL").$fileName;
             }
 
             //添加数据

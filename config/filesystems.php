@@ -47,6 +47,14 @@ return [
             'driver' => 'local',
             'root' => storage_path('app'),
         ],
+        'oss' => [
+            'driver'        => 'oss',
+            'access_id'     => 'LTAIPfvzoMaMXE4x',
+            'access_key'    => '4GwXbCefm3vsjoH3PIfDduWvrfM0yp',
+            'bucket'        => 'progect',
+            'endpoint'      => 'oss-cn-shenzhen.aliyuncs.com', // OSS 外网节点或自定义外部域名
+            'debug'         => false
+        ],
 
         'public_images' => [
             'driver' => 'local',
