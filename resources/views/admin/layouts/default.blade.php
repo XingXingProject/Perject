@@ -53,6 +53,8 @@
   @include("admin.layouts._errors")
   {{--引用消息提示子视图--}}
   @include("admin.layouts._msg")
+  {{--引用编辑器UEditorServiceProvider--}}
+  @include('vendor.ueditor.assets')
   @yield('content')
     <!-- Main content -->
 

@@ -44,7 +44,12 @@ Route::domain('admin.ele.com')->namespace('Admin')->group(function () {
     Route::any('admin/check/{id}',"AdminController@check")->name('admin.check');
     Route::any('admin/login',"AdminController@login")->name('admin.login');
     Route::any('admin/logout',"AdminController@logout")->name('admin.logout');
-
+//平台活动
+    Route::any('active/index',"ActiveController@index")->name('active.index');
+    Route::any('active/add',"ActiveController@add")->name('active.add');
+    Route::any('active/edit/{id}',"ActiveController@edit")->name('active.edit');
+    Route::any('active/del/{id}',"ActiveController@del")->name('active.del');
+    Route::any('active/see/{id}',"ActiveController@see")->name('active.see');
 
 
 });
@@ -65,6 +70,10 @@ Route::domain('shop.ele.com')->namespace('Shop')->group(function () {
     Route::any('menu/add',"MenuController@add")->name('menu.add');
     Route::any('menu/edit/{id}',"MenuController@edit")->name('menu.edit');
     Route::any('menu/del/{id}',"MenuController@del")->name('menu.del');
+
+    //查看平台活动
+    Route::any('active/info',"ActiveController@info")->name('active.info');
+    Route::any('active/show/{id}',"ActiveController@show")->name('active.show');
 
 
 });
